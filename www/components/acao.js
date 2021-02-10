@@ -1,60 +1,81 @@
 $(document).on("click", "#calc", function(){
 
-  var sex = $("#sex").val();
-  var height = $("#height").val();
-  var age = $("#age").val();
-  var pes = $("#pes").val();
+  var calc = $("#calc").val();
+  var n1 = $("#n1").val();
+  var n2 = $("#n2").val();
   var result;
 
-  // calorias // 
-  var fatman = $("#fatman").val();
-  var sed = $("#sed").val();
-  var lev = $("#lev").val();
-  var mod = $("#mod").val();
-  var alt = $("#alt").val();
-  var ext = $("#ext").val();
+  // contas // 
+  var mais = $("#mais").val();
+  var menos = $("#menos").val();
+  var divisao = $("#divisao").val();
+  var multiplicacao = $("#multiplicacao").val();
 
   // HOMI //
-  if (sex == 'h' && fatman == sed){
-  result = sed * (66 + (13.7 * pes)) + (( 5 * height) - (6.8 * age));
+  if (calc == 'mais'){
+  result = (n1 + n2);
   }
 
-  if (sex == 'h' && fatman == lev){
-  result = lev * (66 + (13.7 * pes)) + (( 5 * height) - (6.8 * age));
+  if (calc == 'menos' ){
+  result = (n1 - n2);
   }
 
-  if (sex == 'h' && fatman == mod){
-  result = mod * (66 + (13.7 * pes)) + (( 5 * height) - (6.8 * age));
+  if (calc == 'divisao' ){
+  result = (n1 / n2);
   }
 
-  if (sex == 'h' && fatman == alt){
-  result = alt * (66 + (13.7 * pes)) + (( 5 * height) - (6.8 * age));
+  if (calc == 'multiplicacao' ){
+  result = (n1 * n2);
   }
 
-  if (sex == 'h' && fatman == ext){
-  result = ext * (66 + (13.7 * pes)) + (( 5 * height) - (6.8 * age));
-  }
+  alert("Resultado é: " +result);
+});
 
-    // MUIÉ NA NET, MANO //
-  if (sex == 'm' && fatman == sed){
-  result = sed * (655 + (9.6 * pes)) + (( 1.8 * height) - (4.7 * age));
-  }
+$(document).on("click", "#alerta", function() {
+  navigator.notification.alert("Minha mensagem", null, "Aviso!", "Aceito");
+});
 
-  if (sex == 'm' && fatman == lev){
-  result = lev * (655 + (9.6 * pes)) + (( 1.8 * height) - (4.7 * age));
+$(document).on("click", "#confirmar", function() {
+  function confirma(buttonIndex) {
+    if(buttonIndex == 1) {
+      navigator.notification.alert("Escolheu a op巽達o B");
+    }else{
+      navigator.notification.alert("Escolheu a op巽達o A");     
+    }
   }
+  navigator.notification.confirm("A ou B", confirma, "Escolha: ", ['B', 'A']);
+});
 
-  if (sex == 'm' && fatman == mod){
-  result = mod * (655 + (9.6 * pes)) + (( 1.8 * height) - (4.7 * age));
-  }
+$(document).on("click", "#notificar", function() {
+  navigator.notification.beep(1);
+});
 
-  if (sex == 'm' && fatman == alt){
-  result = alt * (655 + (9.6 * pes)) + (( 1.8 * height) - (4.7 * age));
-  }
+$(document).on("click", "#vibrar", function() {
+  navigator.vibrate(1000);
+});
 
-  if (sex == 'm' && fatman == ext){
-  result = ext * (655 + (9.6 * pes)) + (( 1.8 * height) - (4.7 * age));
-  }
+function mostraMapa(lat, long) {
+  L.mapquest.key = 'ybliJHRjLaNpWqLLNi4n4sKAoDCSVflu';
 
-  alert("calorias: " +result);
+  var map = L.mapquest.map('map', {
+    center: [lat, long],
+    layers: L.mapquest.tileLayer('map'),
+    zoom: 12
+  });
+
+  map.addControl(L.mapquest.control());
+
+}
+
+$(document).on("click", "#local", function() {
+  var onSuccess = function(position) {
+    mostraMapa(position.coords.latitude, position.coords.longitude)
+  };
+
+    function onError(error) {
+        alert('code: '    + error.code    + '\n' +
+              'message: ' + error.message + '\n');
+    }
+
+    navigator.geolocation.getCurrentPosition(onSuccess, onError);
 });

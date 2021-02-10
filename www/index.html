@@ -4,6 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
   <meta http-equiv="Content-Security-Policy" content="default-src * data: gap: https://ssl.gstatic.com/; style-src * 'unsafe-inline'; script-src * 'unsafe-inline' 'unsafe-eval'">
+  
   <!-- links -->
   <script src="components/loader.js"></script>
   <script src="lib/jquery-3.5.1.min.js"></script>
@@ -12,22 +13,29 @@
   <link rel="stylesheet" href="lib/bootstrap/css/bootstrap.min.css">
   <link rel="stylesheet" href="css/style.css">
 
+  <!-- scripts -->
+  <script src="components/loader.js"></script>
+  <script src="lib/jquery-3.5.1.min.js"></script>
+  <script src="components/acao.js"></script>
+
   <body>
   <div class="container">
     <div class="row">
       <div class="col-12">
         <div class="p-3 mb-2 bg-danger text-white">
-          <center><h2>Formulário de calorias</h2></center>
+          <center><h2>Calculadora maneira</h2></center>
         </div>
       </div>
     </div>
     <div class="row">
       <div class="col-12">
         <div class="form-group">
-          <label for="sex"> homi ou muié? </label>
-            <select class="form-control" id="sex"> 
-              <option value="h"> Homi </option>
-              <option value="m"> Muié </option>
+          <label for="calc"> Selecione o calculo </label>
+            <select class="form-control" id="calc"> 
+              <option value="mais"> + </option>
+              <option value="menos"> - </option>
+              <option value="divisao"> / </option>
+              <option value="multiplicacao"> * </option>
             </select> 
         </div>
       </div>
@@ -35,38 +43,16 @@
     <div class="row">
       <div class="col-12">
         <div class="form-group">
-          <label for="height"> Qual sua altura (cm)? </label>
-            <input type="number" class="form-control" id="height" required/>             
+          <label for="n1"> Qual o primeiro numero? </label>
+            <input type="number" class="form-control" id="n1" required/>             
         </div>
       </div>
     </div>
     <div class="row">
       <div class="col-12">
         <div class="form-group">
-          <label for="age"> Qual sua idade? </label>
-            <input type="number" class="form-control" id="age" required/>             
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-12">
-        <div class="form-group">
-          <label for="pes"> Qual seu peso? </label>
-            <input type="number" class="form-control" id="pes" required/>             
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-12">
-        <div class="form-group">
-          <label for="fatman"> Taxa de atividade </label><br>
-            <select class="form-control" id="fatman"> 
-              <option value="1.2" id="sed"> Sedentário </option>
-              <option value="1.375" id="lev"> Levemente ativo </option>
-              <option value="1.55" id="mod"> Moderadamente ativo </option>
-              <option value="1.725" id="alt"> Altamente ativo </option>
-              <option value="1.9" id="ext"> Extremamente ativo </option>
-            </select> 
+          <label for="n2"> Qual o segundo numero? </label>
+            <input type="number" class="form-control" id="n2" required/>             
         </div>
       </div>
     </div>
@@ -75,8 +61,58 @@
         <div class="form-group">
           <button type="button" class="btn btn-danger btn-block" id="calc"> Calcule! </button>
         </div>
-        </div>
+      </div>
     </div>
+
+
+
+    <!-- plugins -->
+<div class="row">
+      <div class="col-sm">
+          <h2><center>Plugin functions</center></h2>
+      </div>
+    </div>
+    <!-- alert -->
+    <div class="row">
+      <div class="col-sm">
+          <button class="btn btn-danger btn-block" id="alert"><center>Alert user</center></button>
+      </div>
+    </div>
+    <br>
+    <!-- notification -->
+    <div class="row">
+      <div class="col-sm">
+          <button class="btn btn-warning btn-block" id="notification"><center>Notify</center></button>
+      </div>
+    </div>
+    <br>
+    <!-- vibration -->
+    <div class="row">
+      <div class="col-sm">
+          <button class="btn btn-primary btn-block" id="vibration"><center>Vibrate</center></button>
+      </div>
+    </div>
+    <br>
+        <!-- confirmar -->
+    <div class="row">
+      <div class="col-sm">
+          <button class="btn btn-success btn-block" id="confirmar"><center>Confirm</center></button>
+      </div>
+    </div>
+    <br>
+    <!-- mapa -->
+    <div class="row">
+      <div class="col-sm">
+          <div class="map" id="map"></div> 
+      </div>
+    </div>
+        <!-- local -->
+    <div class="row">
+      <div class="col-sm">
+          <button class="btn btn-secondary btn-block" id="local"><center>GPS local</center></button>
+      </div>
+    </div>
+  </div>
   </div>
 </body>
 </html>
